@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrifSamuelLab7", "TrifSamuelLab7.csproj", "{92527F50-DC42-4A90-B868-1A783C0F7AFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{92527F50-DC42-4A90-B868-1A783C0F7AFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92527F50-DC42-4A90-B868-1A783C0F7AFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92527F50-DC42-4A90-B868-1A783C0F7AFB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{92527F50-DC42-4A90-B868-1A783C0F7AFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92527F50-DC42-4A90-B868-1A783C0F7AFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92527F50-DC42-4A90-B868-1A783C0F7AFB}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0269EEBC-3A19-440C-BB40-8016352B0809}
+	EndGlobalSection
+EndGlobal
