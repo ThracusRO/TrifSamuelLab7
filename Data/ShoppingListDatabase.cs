@@ -15,7 +15,31 @@ namespace TrifSamuelLab7.Data
         {
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<ShopList>().Wait();
+            //Lab9
+            _database.CreateTableAsync<Product>().Wait();
+            _database.CreateTableAsync<ListProduct>().Wait();
         }
+       //Lab9---------
+        public Task<int> SaveProductAsync(Product product)
+        {
+            if (product.ID != 0)
+            {
+                return _database.UpdateAsync(product);
+            }
+            else
+            {
+                return _database.InsertAsync(product);
+            }
+        }
+        public Task<int> DeleteProductAsync(Product product)
+        {
+            return _database.DeleteAsync(product);
+        }
+        public Task<List<Product>> GetProductsAsync()
+        {
+            return _database.Table<Product>().ToListAsync();
+        }
+        //Lab 9------
         public Task<List<ShopList>> GetShopListsAsync()
         {
             return _database.Table<ShopList>().ToListAsync();
@@ -40,6 +64,38 @@ namespace TrifSamuelLab7.Data
         public Task<int> DeleteShopListAsync(ShopList slist)
         {
             return _database.DeleteAsync(slist);
+        }
+        /*
+        internal async Task SaveListProductAsync(ListProduct lp)
+        {
+            throw new NotImplementedException();
+        }
+        */
+        public Task<int> SaveListProductAsync(ListProduct listp)
+        {
+            if (listp.ID != 0)
+            {
+                return _database.UpdateAsync(listp);
+            }
+            else
+            {
+                return _database.InsertAsync(listp);
+            }
+        }
+        public Task<List<Product>> GetListProductsAsync(int shoplistid)
+        {
+           
+            return _database.QueryAsync<Product>(
+            "select P.ID, P.Description from Product P"
+            + " inner join ListProduct LP"
+            + " on P.ID = LP.ProductID where LP.ShopListID = ?",
+            shoplistid);
+            /*
+                       return _database.QueryAsync<Product>(
+                   "SELECT P.ID, P.Description FROM Product P " +
+                   "INNER JOIN ListProduct LP ON P.ID = LP.ProductID " +
+                   "WHERE LP.ShopListID = 8"); 
+            */
         }
     }
 }

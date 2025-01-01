@@ -3,18 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TrifSamuelLab7.ListPage"
              Title="ListPage">
-  <!--
-      <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
-    -->
-    <StackLayout Margin="20">
-        <Editor Placeholder="Enter the description of the shopping list"
-                Text="{Binding Description}"
-                HeightRequest="100" />
+    <ContentPage.Content xmlns:local="clr-namespace:TrifSamuelLab7.Models">
+        <StackLayout Margin="20">
+            <Editor Placeholder="Enter the description of the shopping list"
+                    Text="{Binding Description}"
+                    HeightRequest="50" >
+                <Editor.Behaviors>
+                    <local:ValidationBehaviour />
+                </Editor.Behaviors>
+            </Editor>
+           
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -26,5 +24,15 @@
                     Text="Delete"
                     Clicked="OnDeleteButtonClicked"/>
         </Grid>
+        <ListView x:Name="listView"
+                    Margin="20">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Detail="{Binding Description}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Add/Choose Item to buy" MaximumWidthRequest="300" Clicked="OnChooseButtonClicked"/>
     </StackLayout>
-</ContentPage>
+        </ContentPage.Content>
+ </ContentPage>
