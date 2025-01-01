@@ -42,4 +42,35 @@ public partial class ListPage : ContentPage
             listView.ItemsSource = await App.Database.GetListProductsAsync(shopl.ID);
                    
     }
+    //---- Sarcina Laborator 9 Begin------
+    async void OnDeleteItemButtonClicked(object sender, EventArgs e)
+    {
+        if (listView.SelectedItem is Product selectedProduct)
+        {
+            // Confirmare stergere
+            bool confirm = await DisplayAlert("Confirm",
+                                              $"Are you sure you want to delete {selectedProduct.Description}?",
+                                              "Yes", "No");
+            if (confirm)
+            {
+                // sterge legatura dintre produs si lista curenta
+                var shopList = (ShopList)BindingContext;
+                var listProduct = await App.Database.GetListProductsAsync(shopList.ID);
+                var productToDelete = listProduct.FirstOrDefault(p => p.ID == selectedProduct.ID);
+
+                if (productToDelete != null)
+                {
+                    await App.Database.DeleteProductAsync(selectedProduct);
+
+                    // actualizeaza lista de produse
+                    listView.ItemsSource = await App.Database.GetListProductsAsync(shopList.ID);
+                }
+            }
+        }
+        else
+        {
+            await DisplayAlert("Error", "Please select an item to delete.", "OK");
+        }
+    }
+     //---- Sarcina Laborator 9 Endn------
 }
