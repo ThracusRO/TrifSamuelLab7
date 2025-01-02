@@ -18,8 +18,10 @@ namespace TrifSamuelLab7.Data
             //Lab9
             _database.CreateTableAsync<Product>().Wait();
             _database.CreateTableAsync<ListProduct>().Wait();
+            //Lab10
+            _database.CreateTableAsync<Shop>().Wait();
         }
-       //Lab9---------
+      
         public Task<int> SaveProductAsync(Product product)
         {
             if (product.ID != 0)
@@ -97,6 +99,25 @@ namespace TrifSamuelLab7.Data
                    "WHERE LP.ShopListID = 8"); 
             */
         }
-        
+        public Task<List<Shop>> GetShopsAsync() 
+        { 
+            return _database.Table<Shop>().ToListAsync(); 
+        }
+        public Task<int> SaveShopAsync(Shop shop) 
+        { 
+            if (shop.ID != 0) 
+            {   
+                return _database.UpdateAsync(shop); 
+            } 
+            else 
+            { 
+                return _database.InsertAsync(shop); 
+            } 
+        }
+        public Task<int> DeleteShopAsync(Shop shop)
+        {
+            return _database.DeleteAsync(shop);
+        }
+
     }
 }

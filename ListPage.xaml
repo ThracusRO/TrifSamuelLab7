@@ -12,6 +12,9 @@
                     <local:ValidationBehaviour />
                 </Editor.Behaviors>
             </Editor>
+
+            <Picker x:Name="ShopPicker" Title="Enter Shop Name"  VerticalOptions="Start"
+        HorizontalOptions="FillAndExpand"/>
            
         <Grid>
             <Grid.ColumnDefinitions>
@@ -34,9 +37,9 @@
         </ListView>
             
             <Button Text="Add/Choose Item to buy" MaximumWidthRequest="300" Clicked="OnChooseButtonClicked"/>
-            <!-- Sarcina Laborator Begin-->
+            <!-- Sarcina Laborator9 Begin-->
             <Button Text="Delete Item" Clicked="OnDeleteItemButtonClicked" Margin="20" HorizontalOptions="Center" />
-            <!-- Sarcina Laborator End -->
+            <!-- Sarcina Laborator9 End -->
         </StackLayout>
         </ContentPage.Content>
  </ContentPage>
